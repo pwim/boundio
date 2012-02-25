@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Boundio::VERSION
   s.authors     = ["Paul McMahon"]
   s.email       = ["paul@mobalean.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "http://boundio.jp"
+  s.summary     = %q{Wrapper for Boundio API}
+  s.description = %q{Boundio is KDDI's telephony API. This is a simple wrapper for it.}
 
   s.rubyforge_project = "boundio"
 
