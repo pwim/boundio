@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+lib_dir = File.join(File.dirname(__FILE__), '..', 'lib')
+$LOAD_PATH.unshift lib_dir if File.directory?(lib_dir)
+
+require 'boundio'
+
+client = Boundio::Client.new(ENV["BOUNDIO_USER_SERIAL_ID"], ENV["BOUNDIO_API_KEY"])
+puts client.call(ARGV[0], ARGV[1]).inspect
