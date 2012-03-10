@@ -9,8 +9,12 @@ module Boundio
         ENV["BOUNDIO_API_KEY"]
       end
 
+      def user_authentication_key
+        ENV["BOUNDIO_USER_AUTHENTICATION_KEY"]
+      end
+
       def request(method, path, params)
-        params = params.merge(key: api_key)
+        params = params.merge(key: api_key, auth: user_authentication_key)
         res = RestClient.send method,
           File.join("https://boundio.jp/api/vd1/#{user_serial_id}", path), 
           method == :get ? { :params => params } : params
