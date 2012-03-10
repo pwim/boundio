@@ -11,13 +11,19 @@ module Boundio
     desc "status", "Look up the status of the specified call"
     method_options :tel_id => :string, :start => :string, :end => :string
     def status
-      puts client.status(options)
+      if options[:tel_id]
+        puts TelStatus.find(options[:tel_id])
+      else
+        puts TelStatus.find_all(options)
+      end
     end
 
     desc "file", "Create a file for use with boundio"
     method_options :convtext => "string", :filename => "string"
     def file
-      puts client.file(options)
+      file = AudioFile.new(options)
+      file.save
+      puts file.id
     end
 
     private

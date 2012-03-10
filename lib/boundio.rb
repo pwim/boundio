@@ -1,11 +1,10 @@
+require "json"
 require "rest-client"
 require "thor"
-require "boundio/resource"
-require "boundio/call"
-require "boundio/version"
-require "boundio/client"
-require "boundio/application"
+require "active_support/core_ext/string/inflections"
 
 module Boundio
-  # Your code goes here...
+  %w[audio_file application call client resource tel_status version].each do |s|
+    autoload s.camelize.to_sym, "boundio/#{s}"
+  end
 end
