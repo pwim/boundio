@@ -4,7 +4,7 @@ require "thor"
 require "active_support/core_ext/string/inflections"
 
 module Boundio
-  %w[audio_file application call client resource tel_status version].each do |s|
+  %w[audio_file application call resource tel_status version].each do |s|
     autoload s.camelize.to_sym, "boundio/#{s}"
   end
 end
