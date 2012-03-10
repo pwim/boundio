@@ -11,6 +11,12 @@ module Boundio
       puts client.status(options)
     end
 
+    desc "file", "Create a file for use with boundio"
+    method_options :convtext => "string", :filename => "string"
+    def file
+      puts client.file(options)
+    end
+
     private
 
     def client 
