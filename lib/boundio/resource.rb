@@ -15,6 +15,7 @@ module Boundio
           File.join("https://boundio.jp/api/vd1/#{user_serial_id}", path), 
           method == :get ? { :params => params } : params
         res = JSON.parse(res)
+        res = res.first if res.is_a?(Array)
         unless res["success"] == "true"
           raise exceptions[res["error"].to_i] || "Error Code #{res["error"]}"
         end
