@@ -1,8 +1,11 @@
 module Boundio
   class Application < Thor
-    desc "call NUMBER CAST", "Call the specified number with the specified cast"
-    def call(number, cast)
-      puts client.call(number, cast)
+    desc "call", "Call the specified number with the specified cast"
+    method_options :tel_to => :string, :cast => :string
+    def call
+      call = Call.new(options)
+      call.save
+      puts call.id
     end
 
     desc "status", "Look up the status of the specified call"
