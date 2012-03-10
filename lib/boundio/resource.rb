@@ -10,9 +10,10 @@ module Boundio
       end
 
       def request(method, path, params)
+        params = params.merge(key: api_key)
         res = RestClient.send method,
           File.join("https://boundio.jp/api/vd1/#{user_serial_id}", path), 
-          params.merge(key: api_key)
+          method == :get ? { :params => params } : params
         res = JSON.parse(res)
         unless res["success"] == "true"
           raise exceptions[res["error"].to_i] || "Error Code #{res["error"]}"
