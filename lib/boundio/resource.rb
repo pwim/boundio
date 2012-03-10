@@ -21,7 +21,7 @@ module Boundio
         res = JSON.parse(res)
         res = res.first if res.is_a?(Array)
         unless res["success"] == "true"
-          raise exceptions[res["error"].to_i] || "Error Code #{res["error"]}"
+          raise exceptions[res["error"].to_i] || Boundio::Exception.new("Error Code #{res["error"]}")
         end
         res
       end
@@ -35,7 +35,7 @@ module Boundio
       args.each {|k,v| send("#{k}=", v) }
     end
 
-    class Unauthorized < StandardError
+    class Unauthorized < Boundio::Exception
     end
   end
 end
