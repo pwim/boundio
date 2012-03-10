@@ -5,9 +5,10 @@ module Boundio
       puts client.call(number, cast)
     end
 
-    desc "status ID", "Look up the status of the specified call"
-    def status(id)
-      puts client.status(id)
+    desc "status", "Look up the status of the specified call"
+    method_options :tel_id => :string, :start => :string, :end => :string
+    def status
+      puts client.status(options)
     end
 
     private
