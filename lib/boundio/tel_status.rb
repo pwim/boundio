@@ -9,7 +9,7 @@ module Boundio
 
       def find_all(options)
         res = request :get, "/tel_status", options
-        res["result"]
+        res["result"].map {|h| parse(h)}
       end
 
       private
