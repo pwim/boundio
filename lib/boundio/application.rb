@@ -5,6 +5,11 @@ module Boundio
       puts client.call(number, cast)
     end
 
+    desc "status ID", "Look up the status of the specified call"
+    def status(id)
+      puts client.status(id)
+    end
+
     private
 
     def client 
