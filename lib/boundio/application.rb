@@ -21,7 +21,7 @@ module Boundio
     desc "file", "Create a file for use with boundio"
     method_options :convtext => :string, :file => :string
     def file
-      file = AudioFile.new(options[:file] ? {file: File.new(options[:file], "rb")} : options)
+      file = AudioFile.new(options[:file] ? {:file => File.new(options[:file], "rb")} : options)
       file.save
       puts file.id
     end
