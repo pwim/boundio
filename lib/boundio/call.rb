@@ -6,7 +6,7 @@ module Boundio
     end
 
     def save
-      res = self.class.request :post, "/call", tel_to: tel_to, cast: cast
+      res = self.class.request :post, "/call", :tel_to => tel_to, :cast => cast
       self.id = res["_id"]
       true
     end
