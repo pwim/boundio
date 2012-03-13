@@ -1,8 +1,7 @@
 $:.unshift File.expand_path('../../lib', __FILE__)
-require "rubygems"
+require "boundio"
 require "minitest/autorun"
 require "webmock/minitest"
-require "boundio"
 
 class BoundioTest < MiniTest::Unit::TestCase
   def setup
