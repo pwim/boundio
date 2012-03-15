@@ -1,16 +1,11 @@
 module Boundio
   class Resource
     class << self
-      def user_serial_id
-        ENV["BOUNDIO_USER_SERIAL_ID"]
-      end
-      
-      def api_key
-        ENV["BOUNDIO_API_KEY"]
-      end
-
-      def user_authentication_key
-        ENV["BOUNDIO_USER_AUTHENTICATION_KEY"]
+      %w[user_serial_id api_key user_authentication_key].each do |s|
+        var = "BOUNDIO_#{s.upcase}"
+        define_method(s) do
+          ENV[var] || raise("Please export #{var}")
+        end
       end
 
       def request(method, path, params)
