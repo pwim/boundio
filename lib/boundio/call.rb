@@ -2,7 +2,7 @@ module Boundio
   class Call < Resource
     attr_accessor :tel_to, :cast, :id
     def self.exceptions
-      super.merge(4 => NotEnoughPoints)
+      super.merge(3 => NoVoiceFile, 4 => NotEnoughPoints)
     end
 
     def save
@@ -11,7 +11,7 @@ module Boundio
       true
     end
 
-    class NotEnoughPoints < Boundio::Exception
-    end
+    class NotEnoughPoints < Boundio::Exception; end
+    class NoVoiceFile < Boundio::Exception; end
   end
 end
