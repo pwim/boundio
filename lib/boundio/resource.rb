@@ -1,7 +1,11 @@
 module Boundio
   class Resource
     class << self
-      %w[user_serial_id api_key user_authentication_key].each do |s|
+      def api_version
+        "vd1"
+      end
+
+      %w[user_serial_id api_key user_key].each do |s|
         var = "BOUNDIO_#{s.upcase}"
         define_method(s) do
           ENV[var] || raise("Please export #{var}")
@@ -9,9 +13,9 @@ module Boundio
       end
 
       def request(method, path, params)
-        params = params.merge(:key => api_key, :auth => user_authentication_key)
+        params = params.merge(:key => api_key, :auth => user_key)
         res = RestClient.send method,
-          File.join("https://boundio.jp/api/vd1/#{user_serial_id}", path), 
+          File.join("https://boundio.jp/api/", api_version, user_serial_id, path), 
           method == :get ? { :params => params } : params
         res = JSON.parse(res)
         res = res.first if res.is_a?(Array)

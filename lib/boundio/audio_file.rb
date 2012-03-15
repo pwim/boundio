@@ -2,6 +2,10 @@ module Boundio
   class AudioFile < Resource
     attr_accessor :convtext, :id, :file
 
+    def self.api_version
+      "v1"
+    end
+
     def self.exceptions
       super.merge(2 => ArgumentError.new("insufficient parameters or file to big"))
     end
