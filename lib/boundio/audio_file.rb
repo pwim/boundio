@@ -7,7 +7,7 @@ module Boundio
     end
 
     def self.exceptions
-      super.merge(2 => ArgumentError.new("insufficient parameters or file to big"))
+      super.merge(2 => InsufficientParametersOrTooBigFile)
     end
 
     def save
@@ -20,5 +20,7 @@ module Boundio
       self.id = res["fileid"]
       true
     end
+
+    class InsufficientParametersOrTooBigFile < Boundio::Exception; end
   end
 end
