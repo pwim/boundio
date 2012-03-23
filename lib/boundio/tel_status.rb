@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Boundio
   class TelStatus < Resource
     attr_accessor :id, :from, :to, :start, :end, :duration, :status
@@ -17,6 +18,10 @@ module Boundio
       def parse(res)
         new(res.map {|k,v| [k.sub(/^_/, ""), v] })
       end
+    end
+
+    def processing?
+      status == "架電待機"
     end
 
     def to_s
