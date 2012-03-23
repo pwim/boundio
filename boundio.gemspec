@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Boundio::VERSION
   s.authors     = ["Paul McMahon"]
   s.email       = ["paul@mobalean.com"]
-  s.homepage    = "http://boundio.jp"
+  s.homepage    = "http://www.doorkeeperhq.com/developer/boundio-ruby-gem"
   s.summary     = %q{Wrapper for Boundio API}
   s.description = %q{Boundio is KDDI's telephony API. This is a simple wrapper for it.}
 
