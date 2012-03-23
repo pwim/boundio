@@ -7,7 +7,7 @@ module Boundio
     end
 
     def +(file)
-      self.class.new(*files, file)
+      self.class.new(*(files + [file]))
     end
 
     def to_s
