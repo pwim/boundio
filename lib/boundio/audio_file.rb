@@ -7,7 +7,7 @@ module Boundio
     end
 
     def self.exceptions
-      super.merge(2 => InsufficientParametersOrTooBigFile)
+      super.merge(2 => InsufficientParametersOrTooBigFile, 6 => VoiceConversionError)
     end
 
     def save
@@ -22,5 +22,6 @@ module Boundio
     end
 
     class InsufficientParametersOrTooBigFile < Boundio::Exception; end
+    class VoiceConversionError < Boundio::Exception; end
   end
 end
