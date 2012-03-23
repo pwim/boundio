@@ -11,6 +11,10 @@ module Boundio
       true
     end
 
+    def status
+      TelStatus.find(id)
+    end
+
     class NotEnoughPoints < Boundio::Exception; end
     class NoVoiceFile < Boundio::Exception; end
   end
