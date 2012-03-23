@@ -3,8 +3,7 @@ module Boundio
     desc "call", "Call the specified number with the specified cast"
     method_options :tel_to => :string, :cast => :string
     def call
-      call = Call.new(options)
-      call.save
+      call = Call.create(options)
       puts call.id
     end
 
@@ -21,8 +20,7 @@ module Boundio
     desc "file", "Create a file for use with boundio"
     method_options :convtext => :string, :file => :string
     def file
-      file = AudioFile.new(options[:file] ? {:file => File.new(options[:file], "rb")} : options)
-      file.save
+      file = AudioFile.create(options[:file] ? {:file => File.new(options[:file], "rb")} : options)
       puts file.id
     end
 

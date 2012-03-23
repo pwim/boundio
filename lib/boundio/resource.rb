@@ -1,6 +1,12 @@
 module Boundio
   class Resource
     class << self
+      def create(args)
+        o = new(args)
+        o.save
+        o
+      end
+
       def api_version
         "vd1"
       end
@@ -30,7 +36,7 @@ module Boundio
       end
     end
 
-    def initialize(args)
+    def initialize(args = {})
       args.each {|k,v| send("#{k}=", v) }
     end
 
