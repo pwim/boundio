@@ -21,6 +21,10 @@ module Boundio
       true
     end
 
+    def +(file)
+      Boundio::Cast.new(self, file)
+    end
+
     class InsufficientParametersOrTooBigFile < Boundio::Exception; end
     class VoiceConversionError < Boundio::Exception; end
   end

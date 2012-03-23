@@ -8,4 +8,12 @@ class TestAudioFile < BoundioTest
     file.save
     assert_equal 5, file.id
   end
+
+  def test_combining_files
+    f1 = Boundio::AudioFile.new
+    f2 = Boundio::AudioFile.new
+    cast = f1 + f2
+    assert_instance_of Boundio::Cast, cast
+    assert_equal [f1, f2], cast.instance_variable_get(:@files)
+  end
 end
